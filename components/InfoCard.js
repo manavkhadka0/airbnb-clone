@@ -6,7 +6,7 @@ import { useState } from "react";
 function InfoCard({ img, location, title, description, star, price, total }) {
   const [toggle, setToggle] = useState(true);
   return (
-    <div className="zoom flex py-7 px-4 border-b-2 cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t-2">
+    <div className="zoom ">
       <div className="card-zoom ">
         <Image
           src={img}

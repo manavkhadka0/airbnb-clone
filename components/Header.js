@@ -13,9 +13,8 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
 import { useRouter } from "next/dist/client/router";
 import { Dialog, Transition } from "@headlessui/react";
-import { ExclamationIcon } from "@heroicons/react/outline";
 
-function Header({ placeholder }) {
+function Header({ placeholder, session, signIn, signOut }) {
   const [searchInput, setSearchInput] = useState("");
   const [open, setOpen] = useState(false);
   const cancelButtonRef = useRef(null);
@@ -52,7 +51,7 @@ function Header({ placeholder }) {
   };
 
   return (
-    <header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
+    <header className="sticky  top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10">
       {/* left */}
       <div
         onClick={() => router.push("/")}
@@ -66,25 +65,42 @@ function Header({ placeholder }) {
         />
       </div>
       {/* Middle */}
-      <div className="flex items-center md:border-2 rounded-full py-2 md:shadow-md">
-        <input
-          onChange={(e) => setSearchInput(e.target.value)}
-          type="text"
-          className="pl-5 bg-transparent outline-none flex-grow"
-          placeholder={placeholder || "Start your Search"}
-          onClick={(e) => setOpen(true)}
-          name=""
-          id=""
-        />
-      </div>
+      {session && (
+        <div className="flex items-center md:border-2 rounded-full py-2 md:shadow-md">
+          <input
+            onChange={(e) => setSearchInput(e.target.value)}
+            type="text"
+            className="pl-5 bg-transparent outline-none flex-grow"
+            placeholder={placeholder || "Start your Search"}
+            onClick={(e) => setOpen(true)}
+            name=""
+            id=""
+          />
+        </div>
+      )}
+
       {/* Right */}
       <div className="flex items-center space-x-4 justify-end text-gray-500">
-        <p className="hidden md:inline button">Become a Host</p>
+        <p className="hidden lg:inline button">Become a Host</p>
         <GlobeAltIcon className="h-6 cursor-pointer" />
-        <div className="flex items-center space-x-2 border-2 p-2  button">
+        <div className="hidden md:inline-flex  items-center space-x-2 border-2 p-2  button">
           <MenuIcon className="h-6" />
           <UserCircleIcon className="h-6" />
         </div>
+        {!session && (
+          <>
+            <button className="button " onClick={signIn}>
+              Sign In
+            </button>
+          </>
+        )}
+        {session && (
+          <>
+            <button className="button" onClick={signOut}>
+              Sign out
+            </button>
+          </>
+        )}
       </div>
       <Transition.Root show={open} as={Fragment}>
         <Dialog
