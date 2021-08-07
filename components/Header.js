@@ -5,6 +5,7 @@ import {
   UserCircleIcon,
   MenuIcon,
   UsersIcon,
+  XIcon,
 } from "@heroicons/react/solid";
 import { useState } from "react";
 import "react-date-range/dist/styles.css"; // main style file
@@ -71,7 +72,16 @@ function Header({ placeholder }) {
           name=""
           id=""
         />
-        <SearchIcon className="hidden lg:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2" />
+        {searchInput && (
+          <XIcon
+            onClick={resetInput}
+            className="h-8 bg-red-400 cursor-pointer rounded-full p-2 text-white hover:text-red-400 hover:bg-white transition duration-200 hover:border-2"
+          />
+        )}
+        <SearchIcon
+          onClick={search}
+          className="hidden lg:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2 hover:text-red-400 hover:bg-white transition duration-200 hover:border-2"
+        />
       </div>
       {/* Right */}
       <div className="flex items-center space-x-4 justify-end text-gray-500">

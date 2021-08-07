@@ -64,7 +64,7 @@ export default function Home({ exploreData, cardsData }) {
       {/* Banner */}
       <Banner />
 
-      <main className="max-w-7xl mx-auto px-8 sm:px-16 bg-gray-900 text-white">
+      <main className="max-w-7xl mx-auto px-8 sm:px-16  text-white">
         <section className="pt-6">
           <h2 className="text-4xl font-semibold pb-5">Explore Nearby</h2>
           {/* Pull data from a server - API */}

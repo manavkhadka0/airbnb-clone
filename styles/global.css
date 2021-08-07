@@ -21,3 +21,15 @@
 .card-zoom:hover .card-zoom-text {
   @apply scale-100;
 }
+
+.zoom:hover .card-zoom-image {
+  @apply scale-150;
+}
+
+.zoom:hover .card-zoom-text {
+  @apply scale-100;
+}
+
+.zoom:hover {
+  @apply scale-105;
+}
