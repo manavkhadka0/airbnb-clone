@@ -4,9 +4,11 @@ import Header from "../components/Header";
 import { format } from "date-fns";
 import InfoCard from "../components/InfoCard";
 import Map from "../components/Map";
+import { signIn, signOut, useSession } from "next-auth/client";
 
 function Search({ searchResults }) {
   const router = useRouter();
+  const [session, loading] = useSession();
 
   // es6 destructing
   const { location, startDate, endDate, noOfGuests } = router.query;
