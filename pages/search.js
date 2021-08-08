@@ -16,7 +16,12 @@ function Search({ searchResults }) {
   const range = `${formattedStartDate} - ${formattedEndDate}`;
   return (
     <div>
-      <Header placeholder={` ${location} | ${range} | ${noOfGuests} guests`} />
+      <Header
+        session={session}
+        signIn={signIn}
+        signOut={signOut}
+        placeholder={` ${location} | ${range} | ${noOfGuests} guests`}
+      />
       <main className="flex">
         <section className="flex-grow pt-14 px-6">
           <p className="text-xs">
