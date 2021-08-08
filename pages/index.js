@@ -56,6 +56,7 @@ export default function Home({ exploreData, cardsData }) {
       },
     ],
   };
+
   return (
     <div className="">
       <Head>
@@ -77,7 +78,13 @@ export default function Home({ exploreData, cardsData }) {
       )}
       {session && (
         <>
-          <Banner text={`Signed in as  ${session.user.name}`} />
+          <Banner
+            text={`Signed in as ${
+              session.user.name === null
+                ? session.user.email
+                : session.user.name
+            }`}
+          />
           <main className="max-w-7xl mx-auto px-8 sm:px-16 bg-black text-white">
             <section className="pt-6">
               <h2 className="text-4xl font-semibold pb-5">Explore Nearby</h2>
